@@ -1,0 +1,44 @@
+extends ../layouts/main-layout.pug
+
+block content   
+
+    if orders.length > 0 
+        each order in orders
+            .card.mb-5
+                .card-header.d-flex.justify-content-between
+                    h4 Sipariş Kodu: #{order.id} 
+                    h4 Tarihi :#{order.createdAt.toLocaleDateString(undefined, {year: 'numeric', month: 'long', day: 'numeric'})}
+                table.table
+                    thead
+                        tr
+                            th Image
+                            th Product Name
+                            th Price
+                            th Quantity
+                    tbody
+                        if order.Products.length > 0
+                            each product in order.Products
+                                tr
+                                    td
+                                        img(src=`/img/${product.imageUrl}` width="80")
+                                    td #{product.name}
+                                    td #{product.orderItem.quantity}
+                                    td #{product.orderItem.price}
+                        else
+                            h1 Product bulunamadı.
+                    tfoot
+                        tr
+                            td(colspan="2") 
+                            td
+                            - var total = 0;
+                            each product in order.Products
+                                - total += (product.price * product.orderItem.quantity);
+                            
+                            td  #{total} TL
+                            
+
+                
+
+
+    else
+        h1 No Orders

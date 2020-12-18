@@ -1,0 +1,15 @@
+form {
+    display: inline;
+}
+
+table, th, td {
+    border: none;
+    
+  }
+
+  .pt-100 {
+    padding-top: 100px;
+}
+
+
+

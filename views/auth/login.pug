@@ -1,0 +1,30 @@
+extends ../layouts/main-layout
+block content       
+    link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="/css/auth.css")
+    body
+        #login           
+            .container
+                #login-row.row.justify-content-center.align-items-center
+                    #login-column.col-md-6
+                        #login-box.col-md-12
+                            form#login-form.form(action='login' method='post')
+                                h3.text-center.text-info Login
+                                if sonuc
+                                    p.alert.alert-danger Giriş Başarısız oldu.
+                                else
+                                    br
+                                .form-group
+                                    label.text-info(for='username') Username:
+                                    br
+                                    input#username.form-control(type='text' name='username')
+                                .form-group
+                                    label.text-info(for='password') Password:
+                                    br
+                                    input#password.form-control(type='text' name='password')
+                                .form-group                                   
+                                    input.btn.btn-info.btn-md(type='submit' name='submit' value='Login' style='width: 150px')
+                                br
+                                #register-link.text-right
+                                    a.text-info(href='#') Login here
+    
